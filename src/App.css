@@ -1,38 +1,192 @@
-.App {
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+:root {
+  --primary-color: #dd2525;
+  --dark-color: #333333;
+  --light-color: #f4f4f4;
+  --lose-color: #dc3545;
+  --win-color: #28a745;
+  --modal-duration: 1s;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  line-height: 1.6;
+  background: #fff;
+  color: #333;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  overflow: hidden;
+  padding: 0 2rem;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.restart-btn {
+  display: none;
+  background: var(--light-color);
+  color: #333;
+  padding: 0.4rem 1.3rem;
+  font-size: 1rem;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  margin-bottom: 1rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.restart-btn:hover {
+  background: var(--primary-color);
+  color: #fff;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.header {
+  text-align: center;
+  margin: 1rem 0;
 }
 
-.App-link {
-  color: #61dafb;
+.header h1 {
+  margin-bottom: 1rem;
 }
 
-@keyframes App-logo-spin {
+.score {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.score p:first-child {
+  background: var(--primary-color);
+}
+
+.score p:last-child {
+  background: var(--dark-color);
+}
+
+.choices {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.choice {
+  cursor: pointer;
+}
+
+.choice:hover {
+  color: var(--primary-color);
+}
+
+.text-win {
+  color: var(--win-color);
+}
+
+.text-lose {
+  color: var(--lose-color);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background: #fff;
+  text-align: center;
+  margin: 10% auto;
+  width: 350px;
+  border-radius: 10px;
+  padding: 3rem;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+}
+
+.modal-content h1 {
+  margin-bottom: 1rem;
+}
+
+.modal-content p {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+@keyframes modalopen {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
   }
+
   to {
-    transform: rotate(360deg);
+    opacity: 1;
   }
+}
+
+@media (max-width: 700px) {
+  .choice {
+    font-size: 110px;
+  }
+}
+
+@media (max-width: 500px) {
+  .choice {
+    font-size: 80px;
+  }
+}
+
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.popup_inner {
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  top: 25%;
+  bottom: 25%;
+  margin: auto;
+  border-radius: 20px;
+  background: white;
+}
+
+.popup_inner p {
+  text-align: center;
+  font-size: 35px;
+}
+
+.popup_inner button {
+  width: 40%;
+  margin-left: 30%;
+  margin-right: 30%;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  font-size: 35px;
+}
+.popup_inner button:hover {
+  font-size: 40px;
+  cursor: pointer;
 }
